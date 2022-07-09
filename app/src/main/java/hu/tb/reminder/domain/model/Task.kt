@@ -10,5 +10,7 @@ data class Task(
     val title: String,
     val description: String?,
     val remindTime: Date,
-    val isItDone: Boolean
+    val isItDone: Boolean,
+    val coverImage: String,
+    val category: Category
 )
