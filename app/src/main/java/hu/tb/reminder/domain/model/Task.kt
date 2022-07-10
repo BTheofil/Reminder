@@ -9,8 +9,8 @@ data class Task(
     @PrimaryKey val id: Int? = null,
     val title: String,
     val description: String?,
-    val remindTime: Date,
-    val isItDone: Boolean,
+    //val remindTime: Date?,
+    val isDone: Boolean,
     val coverImage: String,
     val category: Category
 )
