@@ -18,7 +18,7 @@ import java.util.*
 @Composable
 fun TaskItem(
     task: Task,
-    onEvent: (TaskListEvent) -> Unit = {},
+    onEvent: (TaskListEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -53,5 +53,6 @@ fun TaskItemPreview() {
             coverImage = "",
             category = Category.DAILY
         ),
+        onEvent = {}
     )
 }

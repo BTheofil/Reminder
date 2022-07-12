@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun TaskListScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit = {},
+    onNavigate: (UiEvent.Navigate) -> Unit,
     viewModel: TaskViewModel = hiltViewModel()
 ) {
     val tasksState = viewModel.tasksState.value
@@ -27,6 +27,7 @@ fun TaskListScreen(
             items(tasksState.tasks) { task ->
                 TaskItem(
                     task = task,
+                    onEvent = viewModel::onEvent,
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable {
@@ -41,5 +42,5 @@ fun TaskListScreen(
 @Preview
 @Composable
 fun TaskListScreenPreview(){
-    TaskListScreen()
+    TaskListScreen(onNavigate = {})
 }

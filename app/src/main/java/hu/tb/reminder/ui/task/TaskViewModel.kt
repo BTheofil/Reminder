@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import hu.tb.reminder.domain.model.Category
+import hu.tb.reminder.domain.model.Task
 import hu.tb.reminder.domain.repository.TaskRepository
 import hu.tb.reminder.domain.use_case.TaskUseCases
 import hu.tb.reminder.util.UiEvent
