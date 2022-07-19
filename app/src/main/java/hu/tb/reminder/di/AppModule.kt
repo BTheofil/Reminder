@@ -11,6 +11,7 @@ import hu.tb.reminder.data.repository.TaskRepositoryImpl
 import hu.tb.reminder.domain.repository.TaskRepository
 import hu.tb.reminder.domain.use_case.GetTasks
 import hu.tb.reminder.domain.use_case.TaskUseCases
+import hu.tb.reminder.domain.use_case.ValidateTitle
 import javax.inject.Singleton
 
 @Module
@@ -39,5 +40,11 @@ object AppModule {
         return TaskUseCases(
             getTasks = GetTasks(repository)
         )
+    }
+
+    @Provides
+    @Singleton
+    fun provideValidateTitle(): ValidateTitle{
+        return ValidateTitle()
     }
 }
