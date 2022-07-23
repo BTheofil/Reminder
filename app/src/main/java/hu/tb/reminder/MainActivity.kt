@@ -3,8 +3,7 @@ package hu.tb.reminder
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -21,37 +20,31 @@ class MainActivity : ComponentActivity() {
         setContent {
             ReminderTheme {
                 val navController = rememberNavController()
-                NavHost(
-                    navController = navController,
-                    startDestination = Routes.TASK_LIST
-                ){
-                    composable(
-                        route = Routes.TASK_LIST
-                    ) {
-                        TaskListScreen(
-                            onNavigate = {
-                                navController.navigate(it.route)
-                            }
-                        )
-                    }
-                    composable(
-                        route = Routes.ADD_EDIT_TASK
-                    ) {
-                        AddTaskScreen(
+                Surface(
 
-                        )
+                ) {
+                    NavHost(
+                        navController = navController,
+                        startDestination = Routes.TASK_LIST
+                    ){
+                        composable(
+                            route = Routes.TASK_LIST
+                        ) {
+                            TaskListScreen(
+                                navController = navController
+                            )
+                        }
+                        composable(
+                            route = Routes.ADD_EDIT_TASK
+                        ) {
+                            AddTaskScreen(
+
+                            )
+                        }
                     }
                 }
+
             }
         }
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ReminderTheme {
-
     }
 }

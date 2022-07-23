@@ -14,31 +14,26 @@ import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCompositionContext
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import hu.tb.reminder.util.Routes.ADD_EDIT_TASK
 
 @Composable
 fun TaskListScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    navController: NavController,
     viewModel: TaskViewModel = hiltViewModel()
 ) {
     val tasksState = viewModel.tasksState.value
     val scaffoldState = rememberScaffoldState()
-
-    LaunchedEffect(key1 = true) {
-        viewModel.uiEvent.collect { event ->
-            when(event) {
-                is UiEvent.Navigate -> onNavigate(event)
-                else -> Unit
-            }
-        }
-    }
     
     Scaffold(
         scaffoldState = scaffoldState,
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                viewModel.onEvent(TaskListEvent.OnAddTaskClick)
+                navController.navigate(ADD_EDIT_TASK)
             }) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -69,5 +64,7 @@ fun TaskListScreen(
 @Preview
 @Composable
 fun TaskListScreenPreview(){
-    TaskListScreen(onNavigate = {})
+    TaskListScreen(
+        navController = rememberNavController()
+    )
 }
