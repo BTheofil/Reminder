@@ -9,6 +9,7 @@ import hu.tb.reminder.domain.model.Category
 import hu.tb.reminder.domain.model.Task
 import hu.tb.reminder.domain.repository.TaskRepository
 import hu.tb.reminder.domain.use_case.TaskUseCases
+import hu.tb.reminder.util.Routes
 import hu.tb.reminder.util.UiEvent
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -41,7 +42,7 @@ class TaskViewModel @Inject constructor(
 
             }
             is TaskListEvent.OnAddTaskClick -> {
-
+                sendUiEvent(UiEvent.Navigate(Routes.ADD_EDIT_TASK))
             }
             is TaskListEvent.OnDoneChange -> {
                 viewModelScope.launch {
